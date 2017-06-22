@@ -1,0 +1,61 @@
+<html>
+	<head>
+	<title>Call a Stored Procedure</title>
+	<link rel="stylesheet" type="text/css" href="./font.css">
+	   <body>
+	      	<H1>Call 'sp_bo_ios_flash_to_dg_test' Procedure</H1>
+			<h3>This procedure is handling new iOS ROMs release for Deploy Groups:</h3>
+		       <ul>
+		       	<li>Keep older ROMs available for flash</li>
+		       	<li>Keep older ROMs available for download</li>
+		       	<li>Remove older ROMs and replace them with newer ROMs</li>
+		       	<li>Open newer ROMs for download only</li>
+		       	<li>If you choose "NO" for all options, new ROMs will be available for flash</li>
+		       </ul>
+
+	      <form action = "http://127.0.0.1:8081/greatSuccess" method = "POST" title="asda" onsubmit="return confirm('Are you sure?')">
+	         <b>Deploy Group:</b> <input type = "text" name="DeployGroup" placeholder="DG Number" required> <br><br>
+ 	         <b>Keep Older For Flash:</b> <br>
+ 	         Yes <input type = "radio" onclick="disableDownloadButton()" name = "KeepOlderForFlash" value="true" id="keepOlderYes">
+			 No <input type="radio" onclick="enableDownloadButton()" name="KeepOlderForFlash" value="false"> <br><br>
+
+	         <b>Keep Older For Download:</b> <br>
+	         Yes <input type = "radio" onclick="disableOlderButton()" name = "KeepOlderForDownload" value="true" id="keepDownloadYes">
+			 No <input type = "radio" onclick="enableOlderButton()" name = "KeepOlderForDownload" value="false"> <br><br>
+
+			 <b>Open Newer For Download, Older For Flash:</b> <br>
+			 Yes <input type="radio" onclick="disableYesButtons()" name="KeepNewerForDownload" value="true" id="openNewerDownload">
+			 No <input type="radio" onclick="enableYesButtons()" name="KeepNewerForDownload" value="false">
+
+	         <br><br>
+ 	         <input type="submit" value="Submit">
+	      </form>
+	      <script type="text/javascript">
+			function disableDownloadButton(){
+				document.getElementById("keepDownloadYes").disabled = true;
+				document.getElementById("openNewerDownload").disabled = true;
+			}
+			function enableDownloadButton(){
+				document.getElementById("keepDownloadYes").disabled = false;
+				document.getElementById("openNewerDownload").disabled = false;
+			} 
+			function disableOlderButton(){
+				document.getElementById("keepOlderYes").disabled = true;
+				document.getElementById("openNewerDownload").disabled = true;
+			}
+			function enableOlderButton(){
+				document.getElementById("keepOlderYes").disabled = false;
+				document.getElementById("openNewerDownload").disabled = false;
+			}
+			function disableYesButtons(){
+				document.getElementById("keepOlderYes").disabled = true;
+				document.getElementById("keepDownloadYes").disabled = true;
+			}
+			function enableYesButtons(){
+				document.getElementById("keepOlderYes").disabled = false;
+				document.getElementById("keepDownloadYes").disabled = false;
+			}
+		  </script>
+	   </body>
+	</head>
+</html>
